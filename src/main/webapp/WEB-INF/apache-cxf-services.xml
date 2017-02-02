@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <!-- to turn on annotation wiring == turns on only the registered beans
+        through ApplicationContext -->
+    <context:annotation-config/>
+
+    <!-- scans and register beans using annotation-config (metadata) -->
+    <context:component-scan base-package="com.epam.cxf.pathparam.service"/>
+
+    <!-- register restful web service endpoints -->
+    <jaxrs:server id="restContainer" address="/">
+        <jaxrs:serviceBeans>
+            <ref bean="playerService"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+    <!--<jaxrs:server id="twotest" address="/two">
+        <jaxrs:serviceBeans>
+            <ref bean="testService" />
+        </jaxrs:serviceBeans>
+    </jaxrs:server>-->
+</beans>
