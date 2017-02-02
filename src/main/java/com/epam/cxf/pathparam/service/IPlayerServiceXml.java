@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
  * Created by Volha_Shakhrai on 2/2/2017.
  */
 @Path("/playerservice")
-public interface IPlayerServiceCrud {
+public interface IPlayerServiceXml {
 
     // Basic CRUD operations for Player Service
 

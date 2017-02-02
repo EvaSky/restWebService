@@ -23,6 +23,7 @@
         <!--Apache-->
         <httpclient.version>3.1</httpclient.version>
         <apache.httpcomponents.version>4.5.3</apache.httpcomponents.version>
+        <jackson.version>1.1.1</jackson.version>
 
     </properties>
 
@@ -91,6 +92,13 @@
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http-jetty</artifactId>
             <version>${cxf.version}</version>
+        </dependency>
+
+        <!-- for JSON support in Apache-CXF Restful web service -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-jaxrs</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
 
         <!-- Apache HTTP components for writing test client -->

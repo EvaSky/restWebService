@@ -13,6 +13,19 @@
     <!-- scans and register beans using annotation-config (metadata) -->
     <context:component-scan base-package="com.epam.cxf.pathparam.service"/>
 
+    <!-- to support Java-to-JSON and vice-versa conversion -->
+    <bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
+
+    <jaxrs:server id="restContainer" address="/json">
+        <jaxrs:serviceBeans>
+            <ref bean="playerServiceJson" />
+        </jaxrs:serviceBeans>
+
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+        </jaxrs:providers>
+    </jaxrs:server>
+
     <!-- register restful web service endpoints -->
     <jaxrs:server id="restContainer1" address="/">
         <jaxrs:serviceBeans>
@@ -21,7 +34,7 @@
     </jaxrs:server>
     <jaxrs:server id="resrContainer2" address="/ws">
         <jaxrs:serviceBeans>
-            <ref bean="playerServiceCrud" />
+            <ref bean="playerServiceXml" />
         </jaxrs:serviceBeans>
     </jaxrs:server>
 </beans>
