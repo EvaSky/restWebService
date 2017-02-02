@@ -39,6 +39,38 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
+            <!-- JAXB plugin to generate-sources from XSD -->
+            <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/jaxb2-maven-plugin/2.3 -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>xjc</goal><!-- xjc/generate -->
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.basedir}/generated/java/source</outputDirectory>
+                            <schemaDirectory>${project.basedir}/src/main/resources/xsddir
+                            </schemaDirectory>
+                            <schemaFiles>*.xsd</schemaFiles>
+                            <schemaLanguage>XMLSCHEMA</schemaLanguage>
+                            <extension>true</extension>
+                            <args>
+                                <arg>-XtoString</arg>
+                            </args>
+                            <plugins>
+                                <plugin>
+                                    <groupId>org.jvnet.jaxb2_commons</groupId>
+                                    <artifactId>jaxb2-basics</artifactId>
+                                    <version>0.11.1</version>
+                                </plugin>
+                            </plugins>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
 
     </build>
